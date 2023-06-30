@@ -854,6 +854,8 @@ dependencies = [
  "dotenv",
  "eyre",
  "hex",
+ "serde",
+ "serde_json",
  "starknet",
  "tokio",
  "url",

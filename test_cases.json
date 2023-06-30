@@ -1,0 +1,76 @@
+[
+    {
+      "params": {
+        "value": 0,
+        "code": "604260005260206000F3",
+        "calldata": "",
+        "stack": "",
+        "memory": "0000000000000000000000000000000000000000000000000000000000000042",
+        "return_value": "0000000000000000000000000000000000000000000000000000000000000042"
+      },
+      "id": "return",
+      "marks": ["RETURN", "SystemOperations"]
+    },
+    {
+      "params": {
+        "value": 0,
+        "code": "60016001f3",
+        "calldata": "",
+        "stack": "",
+        "memory": "0000",
+        "return_value": "00"
+      },
+      "id": "return2",
+      "marks": ["RETURN", "SystemOperations"]
+    },
+    {
+      "params": {
+        "value": 0,
+        "code": "60056003600039",
+        "calldata": "",
+        "stack": "",
+        "memory": "0360003900000000000000000000000000000000000000000000000000000000",
+        "return_value": ""
+      },
+      "id": "codecopy",
+      "marks": ["CODECOPY", "EnvironmentalInformation"]
+    },
+    {
+      "params": {
+        "value": 0,
+        "code": "7dffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff6008601f600039",
+        "calldata": "",
+        "stack": "1766847064778384329583297500742918515827483896875618958121606201292619775",
+        "memory": "6008601f60003900000000000000000000000000000000000000000000000000",
+        "return_value": ""
+      },
+      "id": "codecopy2",
+      "marks": ["CODECOPY", "EnvironmentalInformation"]
+    },
+    {
+      "params": {
+        "value": 0,
+        "code": "6003600401600a02608c036102bc04604605600d066010076005600608601060020960040A60600B00",
+        "calldata": "",
+        "stack": "16",
+        "memory": "",
+        "return_value": ""
+      },
+      "id": "Arithmetic operations",
+      "marks": [
+        "ADD",
+        "MUL",
+        "SUB",
+        "DIV",
+        "SDIV",
+        "MOD",
+        "SMOD",
+        "ADDMOD",
+        "MULMOD",
+        "EXP",
+        "SIGNEXTEND",
+        "ArithmeticOperations"
+      ]
+    }
+  ]
+  
