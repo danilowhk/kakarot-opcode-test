@@ -97,7 +97,7 @@ impl KakarotClient<JsonRpcClient<HttpTransport>> {
             .call(request, starknet_block_id)
             .await
             .unwrap();
-        println!("response: {:?}", call_result);
+        // println!("response: {:?}", call_result);
     }
 
     pub async fn call_check_value(&self) {

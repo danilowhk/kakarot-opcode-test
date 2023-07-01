@@ -21,7 +21,7 @@ struct TestCase {
 
 #[derive(Debug, Deserialize)]
 struct Params {
-    value: u8,
+    value: u128,
     code: String,
     calldata: String,
     stack: String,
