@@ -58,8 +58,9 @@ fn main() {
 
         let value = FieldElement::from(test_case.params.value);
         let code = &test_case.params.code;
+        let calldata = &test_case.params.calldata;
         let bytecode = hex_to_field_elements(code);
-        let kakarot_calldata = vec![];
+        let kakarot_calldata = hex_to_field_elements(calldata);
 
         let result = tokio::runtime::Runtime::new().unwrap().block_on(async {
             kakarot_client
