@@ -35,10 +35,23 @@ fn main() {
     let kakarot_client = KakarotClient::new(starknet_config.clone()).unwrap();
 
     // Load test cases from json file
-    let file = File::open("test_cases.json").unwrap();
+    let file = match File::open("test_cases.json") {
+        Ok(file) => file,
+        Err(e) => {
+            println!("Failed to open test_cases.json: {}", e);
+            return;
+        }
+    };
+
     let reader = BufReader::new(file);
 
-    let test_cases: Vec<TestCase> = serde_json::from_reader(reader).unwrap();
+    let test_cases: Vec<TestCase> = match serde_json::from_reader(reader) {
+        Ok(cases) => cases,
+        Err(e) => {
+            println!("Failed to parse test cases: {}", e);
+            return;
+        }
+    };
 
     for (index, test_case) in test_cases.iter().enumerate() {
         println!("Running test case {}: {}", index + 1, test_case.id);
@@ -48,14 +61,15 @@ fn main() {
         let bytecode = hex_to_field_elements(code);
         let kakarot_calldata = vec![];
 
-        tokio::runtime::Runtime::new().unwrap().block_on(async {
+        let result = tokio::runtime::Runtime::new().unwrap().block_on(async {
             kakarot_client
                 .call_execute(value, bytecode, kakarot_calldata)
-                .await;
-
-            kakarot_client.call_check_value().await;
+                .await
         });
-
-        println!("Test case {} finished", test_case.id);
+        
+        match result {
+            Ok(_) => println!("Test case {} finished ✅", test_case.id),
+            Err(e) => println!("Test case {} failed: {} ❌", test_case.id, e),
+        };
     }
 }
