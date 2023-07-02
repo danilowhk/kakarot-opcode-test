@@ -3,8 +3,8 @@ use eyre::Result;
 use starknet::core::types::{BlockId, BlockTag, FieldElement, FunctionCall};
 use starknet::providers::jsonrpc::{HttpTransport, JsonRpcClient};
 use starknet::{macros::selector, providers::Provider};
-use url::Url;
 use std::error::Error;
+use url::Url;
 
 // pub type Error = String;
 
@@ -65,9 +65,9 @@ impl KakarotClient<JsonRpcClient<HttpTransport>> {
         let zero: u8 = 0;
         let gas_limit = FieldElement::from(zero);
         let gas_price = FieldElement::from(zero);
-    
+
         // Create execute_arguments calldata
-    
+
         let mut execute_arguments = vec![];
         execute_arguments.push(starknet_contract_address); //starknet_contract_address
         execute_arguments.push(evm_contract_address); //evm_contract_address
@@ -84,23 +84,22 @@ impl KakarotClient<JsonRpcClient<HttpTransport>> {
         execute_arguments.push(value); //value
         execute_arguments.push(gas_limit); //gas_limit
         execute_arguments.push(gas_price); //gas_price
-    
+
         let starknet_block_id = BlockId::Tag(BlockTag::Latest);
-    
+
         let request = FunctionCall {
             contract_address: self.kakarot_address,
             entry_point_selector: EXECUTE,
             calldata: execute_arguments,
         };
-    
+
         let call_result: Vec<FieldElement> = self
             .starknet_provider
             .call(request, starknet_block_id)
             .await?;
-    
+
         Ok(())
     }
-    
 
     pub async fn call_check_value(&self) {
         let execute_arguments = vec![];

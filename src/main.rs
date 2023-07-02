@@ -67,7 +67,7 @@ fn main() {
                 .call_execute(value, bytecode, kakarot_calldata)
                 .await
         });
-        
+
         match result {
             Ok(_) => println!("Test case {} finished ✅", test_case.id),
             Err(e) => println!("Test case {} failed: {} ❌", test_case.id, e),
